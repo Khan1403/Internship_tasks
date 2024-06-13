@@ -1,0 +1,27 @@
+Step 1 :
+Launch a windows EC2 instance on AWS
+
+Open server manager on the server and click on add roles and features
+
+During setup in the server role section select Active Directory Domain Services and add the feature, complete the remaianing setup and install
+
+Then from notification tab select Promote this server to domain controller
+
+Give a domain name, assign password on the next step and complete the remaining installation with defaults
+
+
+Step 2 :
+Launch a second windows server and connect to it
+
+Open run tab and run the command "sysdm.cpl" 
+
+Change the domain of the server to your newly created domain
+
+Ensure security groups allow inbound traffic to the AD server
+
+Create a DHCP option set in the VPC and assign the private ip of AD server and attach the DHCP to the VPC
+
+If getting error while connecting to AD, go to network adaptor properties and change the DNS ip from discover automatically to private ip of AD server
+
+
+Step 3 :
