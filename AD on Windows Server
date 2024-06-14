@@ -25,3 +25,25 @@ If getting error while connecting to AD, go to network adaptor properties and ch
 
 
 Step 3 :
+Launch a Linux instance and connect to it
+
+Update the repository
+
+Install required packages with 
+| sudo apt install -y realmd libnss-sss libpam-sss sssd sssd-tools adcli samba-common-bin oddjob oddjob-mkhomedir krb5-user packagekit |
+
+Change hostname (Optional)
+| sudo hostnamectl set-hostname ubuntu.(domain name) |
+
+Disable the service systemd.resolved.service
+| sudo systemctl disable systemd.resolved.service |
+| sudo systemctl stop systemd.resolved.service |
+| sudo systemctl status systemd.resolved.service |
+
+Edit the resolv.conf file
+| sudo nano /etc/resolv.conf |
+
+Change the ip of nameserver to private ip of AD server
+
+Join to AD
+| sudo realm join -U Administrator (domain name) |
